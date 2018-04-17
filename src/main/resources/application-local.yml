@@ -1,0 +1,29 @@
+spring:
+ cloud:
+   stream:
+     bindings:
+       input:
+         binder : kafkaBinder
+         destination: test_kafka
+       output:
+         binder: kafkaBinder1
+         destination: test_kafka
+     binders:
+       kafkaBinder:
+         type: kafka
+         environment:
+           spring:
+             cloud:
+               stream:
+                 kafka:
+                   binder:
+                     brokers: localhost:9092
+       kafkaBinder1:
+         type: kafka
+         environment:
+           spring:
+             cloud:
+               stream:
+                 kafka:
+                   binder:
+                     brokers: localhost:9092
